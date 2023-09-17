@@ -1,0 +1,16 @@
+.scroller {
+  height: 300px;
+  overflow-y: scroll;
+  scrollbar-width: thin;
+}
+
+
+input.dchange, textarea { 
+  border:1.5px solid #cdcdcd;
+  background: #f9f9fc; }
+
+
+th,td {
+ text-align:center;
+}
+

@@ -1,0 +1,217 @@
+{% extends "base.html" %}{% block content%}
+
+    <!-- Content Row -->
+                    <div class="row">
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-2 col-md-6 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                Users #</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{user_info['users']}}</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-user fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-success shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                12 Month Avg. CLTV</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{user_info['avg_cltv']}}</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Avg. Churn Prob
+                                            </div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{user_info['churn_prob']}}</div>
+                                                </div>
+                                                <div class="col">
+                                              
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-hourglass-half fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pending Requests Card Example -->
+                        <div class="col-xl-2 col-md-6 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                AVG. ORDER #</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{user_info['order_num']}}</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+ 
+                        <!-- Pending Requests Card Example -->
+                        <div class="col-xl-2 col-md-6 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                AVG. ORDER $</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{user_info['order_size']}}</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+    <div class="row">
+   
+        <div class="col-md-4">
+            <row><input type="radio" id="clv" name="radio_sel" value="clv" checked>
+                <label for="clv">Avg. CLV</label>
+                <input type="radio" id="churn" name="radio_sel" value="churn">
+                <label for="clv">Avg. Churn Prob</label>
+            </row>
+            <row>
+            <div class="chart scroller" id="bargraph">
+                <script>
+                    var graphs = {{plot | safe}};
+                    Plotly.plot('bargraph',graphs,{});
+                </script>
+            </div>
+            </row>
+        </div>
+
+
+       <div class="col-md-4">
+            <h5>Customer Segmentation</h5>
+            <row>
+            <div class="chart scroller" id="bargraph1">
+                <script>
+                    var graphs = {{seg | safe}};
+                    Plotly.plot('bargraph1',graphs,{});
+                </script>
+            </div>
+            </row>
+        </div>
+                <div class="col-md-4">
+                <row><input type="radio" id="hs-a" name="target_sel" value="hs-a" checked>
+                <label for="hs-a">HS Active</label>
+                <input type="radio" id="ms-ia" name="target_sel" value="ms-ia">
+                <label for="ms-ia">MS Inactive</label>
+                <input type="radio" id="ls-a" name="target_sel" value="ls-a">
+                <label for="ls-a">LS active</label>
+            </row>
+
+            <row>
+                    <form>
+                        <table>
+                            <tr>
+                              <td align="right">Budget:</td>
+                              <td align="left"><input type="text" name="budget_i" value={{roi_data["budget"]}} /></td>
+                            </tr>
+                             <tr>
+                             <td align="right">CPM:</td>
+                            <td align="left"><input type="text" name="cpm_i"  value={{roi_data["cpm"]}} /></td>
+                            </tr>
+                             <tr>
+                              <td align="right">Impression:</td>
+                               <td align="left"><input type="text" class = "dchange" name="imp_i" value={{roi_data["impression"]}} readonly /></td>
+                            </tr>
+                             <tr>
+                              <td align="right">CTR:</td>
+                               <td align="left"><input type="text"  name="ctr_i" value={{roi_data["ctr"]}} /></td>
+                            </tr>
+                             <tr>
+                              <td align="right" >Clicks:</td>
+                               <td align="left"><input type="text" class = "dchange"name="clicks_i" value={{roi_data["clicks"]}} readonly/></td>
+                            </tr>
+                              <tr>
+                              <td align="right">Conversion:</td>
+                               <td align="left"><input type="text" class = "dchange" name="conv_i" value={{roi_data["conversion"]}} readonly/></td>
+                            </tr>
+                            <td align="right">Revenue:</td>
+                               <td align="left"><input type="text"  class = "dchange" name="rev_i" value = {{roi_data["rev"]}} readonly/></td>
+                            </tr>
+                            </tr>
+                            <td align="right">Profit:</td>
+                               <td align="left"><input type="text" class = "dchange" name="profit_i" value = {{roi_data["profit"]}} readonly/></td>
+                            </tr>
+                            </tr>
+                            <td align="right">ROI:</td>
+                               <td align="left"><input type="text" class = "dchange" name="roi_i" value = {{roi_data["roi"]}} readonly/></td>
+                            </tr></table>
+                </form>
+            </row>
+
+        </div>
+    </div>
+
+    <div class = "row">
+
+    <div class = "col-md-12">
+     <br></br>
+        <table id="example" class="display" width="100%">
+
+        </table>
+      </div>
+    </div>
+  <script>
+const dataSet =  {{ test_data['data'] | safe}}
+const head_info = {{ test_data['head']|safe}}
+new DataTable('#example', {
+    columns: head_info,
+    data: dataSet,
+    fixedColumns: {
+       leftColumns: 2,
+    },
+    paging: false,
+    scrollCollapse: true,
+    scrollX: true,
+    scrollY: 500,
+    dom: 'Bfrtip',
+     buttons: ['copy', 'csv', 'excel']
+});
+     </script>
+
+
+
+{% endblock %}

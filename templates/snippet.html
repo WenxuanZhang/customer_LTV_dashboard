@@ -1,0 +1,20 @@
+     <div class="col-xs-3">
+            <label> Choose the plot type....</label>
+            <select class="form-control" id ='first_cat'>
+             <option value="Survived"> Survived</option>
+                {% for item in metrics %}
+                {% if item != "Survived" %}
+                <option value="{{ item }}"> {{ item }}</option>
+                {% endif %}
+                 {% endfor %}
+            </select>
+        </div>
+
+        plot_bgcolor = 'rgba(0, 0, 0, 0)'
+
+            fig.update_traces(
+    hovertemplate="<br>".join([
+        "Country: %{y}",
+        "Users: %{x}",
+        "CLV: %{customdata[0]}",
+    ]))
