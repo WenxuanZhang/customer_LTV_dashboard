@@ -1,6 +1,6 @@
 # Customer Life Time Value Dashboard
 
-**Author**: wenxuan zhang 
+**Author**: Wenxuan Zhang 
 
 **Contact**: ll.wxzhang@gmail.com
 
