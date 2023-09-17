@@ -28,9 +28,9 @@ Welcome to the Customer Lifetime Value (CLV) Dashboard, a powerful tool for trac
 ![alt text](./static/img/cltv.png)
 
 ### Tech Detail
-* Web Application: Python Flask, Javascript, HTML, CSS,Jquery, Datatable, Pandas, 
-* Model: Python scikit learn, lifetime packages
-* Deployment: AWS Elastic Beanstalk,AWS EC2,AWS CodePipeline, Github
+* **Web Application**: Python Flask, Javascript, HTML, CSS,Jquery, Datatable, Pandas, 
+* **Model**: Python scikit learn, lifetime packages
+* **Deployment**: AWS Elastic Beanstalk,AWS EC2,AWS CodePipeline, Github
 
 ### Project Link
 
